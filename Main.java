@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-14 01:12:54
+* @Last Modified time: 2015-04-23 22:17:06
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
@@ -31,13 +31,17 @@ public class Main extends Application{
 	final static int MAX_BUTTON_HEIGHT = 					40;
 	final static int PREF_ROW_SPACING = 					250;
 	final static int PREF_SUBWINDOW_WIDTH = 			800;
-	final static int PREF_SUBWINDOW_HEIGHT = 			500;
-	final static int PREF_MAINWINDOW_WIDTH = 			1200;
+	final static int PREF_SUBWINDOW_HEIGHT = 			728;
+	final static int PREF_MAINWINDOW_WIDTH = 			1024;
 	final static int PREF_MAINWINDOW_HEIGHT = 			PREF_MAINWINDOW_WIDTH/12*9;
 
 
 
 	// decare instance vars
+	ObservableList<String> sessions;
+	ListView<String> sessionSlots;
+	ObservableList<String> tutors;
+	ListView<String> tutorSlots;
 	ObservableList<String> items;
 	ListView<String> itemSlots;
 	LoginBox student;
@@ -117,7 +121,7 @@ public class Main extends Application{
 
 		// home top box
 		HBox homeTopBox = new HBox(250); // arg integer pixel spacing
-		HBox homeNavbar = new HBox(20); // login btn, title label
+		HBox homeNavbar = new HBox(30); // login btn, title label
 		homeNavbar.setPrefHeight(PREF_MAINWINDOW_HEIGHT/12);
 
 		// create new user button
@@ -142,7 +146,8 @@ public class Main extends Application{
 
 		// home left box (item listings)
 		VBox homeLeftBox = new VBox(30); // left box
-		homeLeftBox.setPrefWidth(PREF_MAINWINDOW_WIDTH/2);
+		homeLeftBox.setPrefWidth(PREF_MAINWINDOW_WIDTH/3);
+		homeLeftBox.setPadding(new Insets(15,12,15,12));
 		VBox leftContent = new VBox(30); // item listings
 
 		//leftContent.setPadding(new Insets(0, 180, 0, 8));
@@ -152,15 +157,7 @@ public class Main extends Application{
 		items = FXCollections.observableArrayList(
 			//"Judy Carpenter",
 			//"John Doe",
-			//"Robert Deniro",
-			//"James Brown",
-			//"George Clooney",
-			//"Denzel Washington",
-			//"Jessica Alba",
-			//"Liam Neeson",
-			//"Tupac Shakur",
-			//"Eric Phung",
-			//"Greatest Ever"
+			//"Robert Deniro"
 			);
 		// set items to slots
 		itemSlots.setItems(items);
@@ -169,48 +166,110 @@ public class Main extends Application{
 		itemSlots.setPrefHeight(1000);
 
 		// add home content
-		leftContent.getChildren().addAll(new Label("Students"),itemSlots);
+		leftContent.getChildren().addAll(new Label("\tStudents"),itemSlots);
 		homeLeftBox.getChildren().add(leftContent);
 		homeLeftBox.setPadding(new Insets(15,12,15,12));
+		homeLeftBox.setAlignment(Pos.TOP_CENTER); // center align layout
 
 
 
 
 		// home right box
-		VBox homeRightBox = new VBox();
-		homeRightBox.setPrefWidth(PREF_MAINWINDOW_WIDTH/2);
-		VBox rightContent = new VBox();
-		rightContent.setPadding(new Insets(10));
-		rightContent.setSpacing(8);
+		VBox homeRightBox = new VBox(30);
+		homeRightBox.setPrefWidth(PREF_MAINWINDOW_WIDTH/3);
+		VBox rightContent = new VBox(30);
+		//rightContent.setPadding(new Insets(10));
+		//rightContent.setSpacing(8);
 		//Text rightContentLabel = new Text("Available Tutors");
-		rightContent.getChildren().add(new Label("Tutors"));
+		//rightContent.getChildren().add(new Label("Tutors"));
 
 
 
-		// home right content
-		Hyperlink options[] = new Hyperlink[] {
-			new Hyperlink("Sam Sebhatu"),
-			new Hyperlink("Mark Power"),
-			new Hyperlink("Corey Foley"),
-			new Hyperlink("Jon Conklin"),
-			new Hyperlink("Eric Phung")
-		};
-
-			for (int i = 0; i < options.length; i++) {
-				rightContent.setMargin(options[i], new Insets(0, 100, 0, 8));
-				rightContent.getChildren().add(options[i]);
+/*
+			for (int i = 0; i < optionsColumnA.length; i++) {
+				rightContent.setMargin(optionsColumnA[i], new Insets(0, 100, 0, 8));
+				rightContent.getChildren().addAll(optionsColumnA[i]);
 		} // end for
+*/
+		// home right content (observable list)
+		tutorSlots = new ListView<String>();
+		tutors = FXCollections.observableArrayList(
+			"Andrea",
+			"Becki",
+			"Bruck",
+			"Byron",
+			"Cathy",
+			"Corey",
+			"Donald",
+			"Elaine",
+			"Eric",
+			"Jason",
+			"John",
+			"Josh",
+			"Kelly",
+			"Laura",
+			"Mark",
+			"Michele",
+			"Nicholas",
+			"Phil",
+			"Rhoda",
+			"Sam",
+			"Sara"
+			);
+		// set tutors to slots
+		tutorSlots.setItems(tutors);
+		//itemSlots.setMaxHeight(Control.USE_PREF_SIZE); // set list on list box height
+		tutorSlots.setPrefWidth(300);
+		tutorSlots.setPrefHeight(1000);
+		rightContent.getChildren().addAll(new Label("\t\tTutors"),tutorSlots);
 
 		// add home right content
 		homeRightBox.getChildren().add(rightContent);
 		homeRightBox.setPadding(new Insets(15,12,15,12));
+		homeRightBox.setAlignment(Pos.TOP_CENTER); // center align layout
+
+
+
+
+
+
+
+
+
+
+
+		// home center box
+		VBox homeCenterBox = new VBox(30); // for border
+		VBox centerContent = new VBox(30);
+
+
+		//homeCenterBox.getChildren().addAll(new Text("\tCurrent Sessions"),centerContent);
+		homeCenterBox.setPadding(new Insets(15,12,15,12));
+
+
+		// home right center content
+		sessionSlots = new ListView<String>();
+		sessions = FXCollections.observableArrayList(
+			);
+		// set tutors to slots
+		sessionSlots.setItems(sessions);
+		sessionSlots.setPrefWidth(300);
+		sessionSlots.setPrefHeight(1000);
+		centerContent.getChildren().addAll(new Label("\tSessions"),sessionSlots);
+
+		// add home center content
+		homeCenterBox.getChildren().add(centerContent);
+		homeCenterBox.setPadding(new Insets(15,12,15,12));
+		homeCenterBox.setAlignment(Pos.TOP_CENTER); // center align layout
+
+
 
 
 
 
 
 		// home bottom box
-		HBox homeBottomBox = new HBox(30); // for border
+		HBox homeBottomBox = new HBox(250); // for border
 
 		// home bottom content
 		HBox bottomContent = new HBox(30); // for gui objects
@@ -222,12 +281,12 @@ public class Main extends Application{
 		removeBtn = new Button("Remove");
 		removeBtn.getStylesheets().add("Style.css");
 		removeBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
+		// remove button event
 		removeBtn.setOnAction(e -> {
 			items.remove(itemSlots.getFocusModel().getFocusedItem());
 			itemSlots.setItems(items);
 		});
 
-		// remove button event
 
 		// bottom load button
 		loadBtn = new Button("Load");
@@ -235,16 +294,33 @@ public class Main extends Application{
 		loadBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		loadBtn.setOnAction(e -> {
 
+		}); // load button event
 
-		}); // remove button event
+
+		// bottom start button
+		Button startBtn = new Button("Start Session");
+		startBtn.getStylesheets().add("Style.css");
+
+		startBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
+		// start button event
+		startBtn.setOnAction(e -> {
+			// pull text from slot lists
+			System.out.println(itemSlots.getFocusModel().getFocusedItem());
+			System.out.println(tutorSlots.getFocusModel().getFocusedItem());
+
+			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " since " + "(time)";
+			sessions.add(session);
+			sessionSlots.setItems(sessions);
 
 
-		bottomContent.getChildren().addAll(removeBtn,loadBtn);
+
+		}); // end start button event
+
+		bottomContent.getChildren().addAll(removeBtn,loadBtn,startBtn);
 
 		homeBottomBox.getChildren().add(bottomContent);
 		homeBottomBox.setPadding(new Insets(15,12,15,12));
-
-
+		homeBottomBox.setAlignment(Pos.TOP_CENTER); // center align layout
 
 
 
@@ -253,6 +329,7 @@ public class Main extends Application{
 		homeLayout.setLeft(homeLeftBox);
 		homeLayout.setRight(homeRightBox);
 		homeLayout.setBottom(homeBottomBox);
+		homeLayout.setCenter(homeCenterBox);
 
 
 
@@ -260,194 +337,6 @@ public class Main extends Application{
 
 
 
-
-
-
-/*
-
-		//	====================================	LOGIN SCREEN
-		BorderPane loginLayout = new BorderPane(); // login borders
-		Scene loginScene = new Scene(loginLayout, PREF_SUBWINDOW_WIDTH,PREF_SUBWINDOW_HEIGHT); // change scene to login 600x300
-		loginScene.getStylesheets().add("Main.css");
-
-		// login top box
-		HBox loginTopBox = new HBox();
-
-		HBox loginTopContent = new HBox();
-		loginTopBox.setPrefHeight(PREF_MAINWINDOW_HEIGHT/12);
-		loginTopBox.setAlignment(Pos.TOP_CENTER);
-		loginTopContent.setPadding(new Insets(15,12,15,12));
-
-		loginTopContent.setPrefHeight(PREF_SUBWINDOW_HEIGHT/5);
-
-		// set grid login TOP content
-		loginTopContent.getChildren().add(submitBtn);
-		loginTopBox.getChildren().add(loginTopContent);
-
-
-		// login Left box
-		VBox loginLeftBox = new VBox();
-
-
-
-		VBox loginLeftContent = new VBox();
-		loginLeftContent.setPadding(new Insets(10));
-		loginLeftContent.setSpacing(8);
-		ListView<String> subjectList = new ListView<>();
-		ObservableList<String> subjectItems =FXCollections.observableArrayList (
-			"Stuff",
-			"Geology",
-			"Math",
-			"Science",
-			"Economics",
-			"Poetry",
-			"Chemistry",
-			"Anthropology",
-			"History",
-			"Philosophy",
-			"Comedy",
-			"Physics",
-			"Calculus",
-			"Computer Science",
-			"Physical Science",
-			"Astronomy",
-			"Counting"
-
-		);
-		subjectList.setItems(subjectItems);
-		subjectList.setPrefWidth(PREF_SUBWINDOW_WIDTH/2);
-		subjectList.setPrefHeight(PREF_SUBWINDOW_HEIGHT);
-
-
-		loginLeftContent.getChildren().add(subjectList);
-		loginLeftBox.getChildren().add(loginLeftContent);
-
-
-
-
-		// login bottom box
-		HBox loginBottomBox = new HBox(); // make login bottom box
-		HBox loginBottomContent = new HBox(); // login bottom content
-
-
-		// ================================	USER PASSWORD FIELD
-
-		final Label message = new Label("Hint: The CNumber is 'password'");
-
-		VBox vb = new VBox();
-		vb.setPadding(new Insets(10, 0, 0, 10));
-		vb.setSpacing(10);
-		HBox hb = new HBox();
-		hb.setSpacing(10);
-		hb.setAlignment(Pos.CENTER_LEFT);
-
-		Label label = new Label("CNumber:");
-		final PasswordField pb = new PasswordField();
-
-		// Vaildate password
-		//submitBtn.setOnAction(e -> window.setScene(homeScene));
-		pb.setOnAction((ActionEvent e) -> {
-		    if (!pb.getText().equals("password")) {
-		        message.setText("Your CNumber is incorrect!");
-		        message.setTextFill(Color.rgb(210, 39, 30));
-		    } else {
-		        message.setText("Your CNumber has been confirmed");
-		        message.setTextFill(Color.rgb(21, 117, 84));
-		        window.setScene(homeScene);
-		    }
-		    pb.clear();
-		});
-
-		hb.getChildren().addAll(label, pb);
-		vb.getChildren().addAll(hb, message);
-
-		loginBottomContent.getChildren().add(vb); // add submit button
-
-		loginBottomBox.setAlignment(Pos.BOTTOM_CENTER); // align home layout
-		loginBottomBox.setPadding(new Insets(15, 12, 15, 12)); // pad home layout
-		submitBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
-		loginBottomBox.getChildren().add(loginBottomContent);
-
-
-		// login right Box
-		VBox loginRightBox = new VBox();
-		loginRightBox.setPrefWidth(PREF_SUBWINDOW_WIDTH/2);
-
-		// login right content
-		VBox loginRightContent = new VBox();
-
-
-				// ================================	USER TEXT FIELDS
-		//Creating a GridPane container
-		GridPane grid = new GridPane();
-		grid.setPadding(new Insets(10, 10, 10, 10));
-		grid.setVgap(5);
-		grid.setHgap(5);
-
-		//Defining the Name text field
-		final TextField firstNameTextField = new TextField();
-		firstNameTextField.setPromptText("Enter your first name.");
-		GridPane.setConstraints(firstNameTextField, 0, 0);
-		grid.getChildren().add(firstNameTextField);
-
-		//Defining the Last Name text field
-		final TextField lastNameTextField = new TextField();
-		lastNameTextField.setPromptText("Enter your last name.");
-		GridPane.setConstraints(lastNameTextField, 0, 1);
-		grid.getChildren().add(lastNameTextField);
-
-		//Defining the Comment text field
-		final TextField comment = new TextField();
-		comment.setPromptText("Enter your major.");
-		GridPane.setConstraints(comment, 0, 2);
-		grid.getChildren().add(comment);
-
-		//Defining the Submit button
-		//Button submit = new Button("Submit");
-		//GridPane.setConstraints(submit, 1, 0);
-		//grid.getChildren().add(submit);
-
-		//Defining the last name label
-		Label lastName = new Label();
-		GridPane.setConstraints(lastName, 1, 1);
-		grid.getChildren().add(lastName);
-
-
-		loginRightContent.getChildren().addAll(new Label(),grid);
-
-		loginRightBox.getChildren().add(loginRightContent);
-
-
-
-
-
-
-		// login set layout
-		loginLayout.setBottom(loginBottomBox);
-		loginLayout.setTop(loginTopBox);
-		loginLayout.setLeft(loginLeftBox);
-		loginLayout.setRight(loginRightBox);
-
-
-
-
-
-		//	================================================	DEBUG BORDERS
-		loginTopBox.setStyle("-fx-border-color: black;"); // black border debug
-		loginLeftBox.setStyle("-fx-border-color: black;"); // black border debug
-		loginRightBox.setStyle("-fx-border-color: black;"); // black border debug
-		loginBottomBox.setStyle("-fx-border-color: black;"); // black border debug
-
-*/
-
-
-/*
-		homeTopBox.setStyle("-fx-border-color: black;"); // black border debug
-		homeLeftBox.setStyle("-fx-border-color: black;"); // black border debug
-		homeRightBox.setStyle("-fx-border-color: black;"); // black border debug
-		homeBottomBox.setStyle("-fx-border-color: black;"); // black border debug
-
-*/
 
 
 		// initiate window

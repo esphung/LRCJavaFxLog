@@ -1,8 +1,8 @@
 /*
 * @Author: Eric Phung
 * @Date:   2015-04-11 10:40:59
-* @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-14 00:00:33
+* @Last Modified by:   home
+* @Last Modified time: 2015-04-23 21:11:39
 // ALERT BOX CLASS <- FOR RETURN STUDENT SIGN IN
 */
 
@@ -115,23 +115,66 @@ public class LoginBox {
 		modalLeftContent.setSpacing(8);
 		ListView<String> subjectList = new ListView<>();
 		ObservableList<String> subjectItems =FXCollections.observableArrayList (
-			"Stuff",
-			"Geology",
-			"Math",
-			"Science",
+			"ACCT",
+			"Accuplacer",
+			"Biology",
+			"Business",
+			"Capstone",
+			"CHEM101",
+			"CHEM105",
+			"CHEM106",
+			"CHEM111",
+			"CINS",
+			"Computer",
+			"Criminal Justice",
+			"Earth Science",
 			"Economics",
-			"Poetry",
-			"Chemistry",
-			"Anthropology",
+			"EDU101",
+			"Electronics",
+			"ENG073",
+			"ENG083",
+			"ENG093",
+			"ENG095",
+			"ENG111",
+			"ENG112",
+			"ENG211",
+			"Engineering",
+			"ESOL",
 			"History",
-			"Philosophy",
-			"Comedy",
-			"Physics",
-			"Calculus",
-			"Computer Science",
-			"Physical Science",
-			"Astronomy",
-			"Counting"
+			"Human Resources",
+			"IVY101",
+			"IVY120",
+			"MATH015",
+			"MATH120",
+			"MATH121",
+			"MATH122",
+			"MATH123",
+			"MATH127",
+			"MATH128",
+			"MATH129",
+			"MATH135",
+			"MATH136",
+			"MATH137",
+			"MATH200",
+			"MATH201",
+			"MATH211",
+			"MATH212",
+			"MATH213",
+			"MATH221",
+			"MATH222",
+			"MATH261",
+			"MATH264",
+			"OTHER",
+			"PAPER",
+			"PHY101",
+			"PHY102",
+			"PHY221",
+			"PHY222",
+			"Psychology",
+			"Spanish",
+			"Speech/Communcations",
+			"Theater",
+			"Visual Basic"
 
 		);
 		subjectList.setItems(subjectItems);
