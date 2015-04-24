@@ -1,8 +1,8 @@
 /*
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
-* @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-24 00:18:56
+* @Last Modified by:   home
+* @Last Modified time: 2015-04-24 03:40:28
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
@@ -38,12 +38,17 @@ public class Main extends Application{
 
 
 	// decare instance vars
+	// sessions
+	//SerialList savedSessions; // serialized list sessions
 	ObservableList<String> sessions;
 	ListView<String> sessionSlots;
+	// tutors
 	ObservableList<String> tutors;
 	ListView<String> tutorSlots;
+	// students
 	ObservableList<String> items;
 	ListView<String> itemSlots;
+
 	LoginBox student;
 	Button loginBtn;
 	//Button confirmBtn;
@@ -83,6 +88,9 @@ public class Main extends Application{
 		String timestamp = new java.text.SimpleDateFormat("h:mm a").format(new Date());
 		System.out.println(timestamp); // 12/01/2011 4:48:16 PM
 
+
+
+
 		//	====================================		LOGIN STUFF
 		// set login button
 		loginBtn = new Button("Login");
@@ -101,6 +109,8 @@ public class Main extends Application{
 			} // end if/else null selection
 
 			} // end if last name null
+								// save the current list items
+
 
 
 
@@ -110,6 +120,9 @@ public class Main extends Application{
 				// doSomething
 				System.out.print(student.cNumber);
 			} // end if null
+
+				SerialList savedSessions = new SerialList(items); // save current list
+				savedSessions.saveSerialList();
 
 		}); // args: title, message
 		loginBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
@@ -227,6 +240,15 @@ public class Main extends Application{
 			"Sara"
 			);
 		// set tutors to slots
+
+
+
+
+
+
+
+
+
 		tutorSlots.setItems(tutors);
 		//itemSlots.setMaxHeight(Control.USE_PREF_SIZE); // set list on list box height
 		tutorSlots.setPrefWidth(300);
@@ -300,7 +322,8 @@ public class Main extends Application{
 			else {
 				items.remove(itemSlots.getFocusModel().getFocusedItem());
 			} // end if/else clear out
-			itemSlots.setItems(items);
+			//itemSlots.setItems(items);
+
 		});
 
 
@@ -309,6 +332,8 @@ public class Main extends Application{
 		loadBtn.getStylesheets().add("Style.css");
 		loadBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		loadBtn.setOnAction(e -> {
+
+
 
 		}); // load button event
 
@@ -372,6 +397,18 @@ public class Main extends Application{
 
 
 
+		// load the current list items
+		SerialList loadedSessions = new SerialList(); // create new inst
+		loadedSessions.loadSerialList(); // load prev list file
+
+		// debug print out current list items
+		System.out.println(loadedSessions.strList);
+
+		for (int i = 0; i <= loadedSessions.strList.size()-1; i++) {
+			items.add(loadedSessions.strList.get(i));
+			//System.out.println(tutors.size());
+		}
+
 
 
 
@@ -380,6 +417,15 @@ public class Main extends Application{
 		window.setScene(homeScene);
 		window.setTitle("Welcome to the Learning Resource Center!");
 		window.show();
+
+		window.setOnCloseRequest(new EventHandler<WindowEvent>() {
+          public void handle(WindowEvent we) {
+          	//save the current list items
+						SerialList savedSessions = new SerialList(items); // save current list
+						savedSessions.saveSerialList();
+          } // end closing handle
+      }); // end close request
+    //window.close();
 
 
 
@@ -390,6 +436,28 @@ public class Main extends Application{
 	} // end start method/exception
 
 
+/*
 
+// =======================  SERIALIZATION PROCESS!!!!!!
+		// save the current list items
+		//SerialList savedSessions = new SerialList(items); // save current list
+
+		// load the current list items
+		SerialList loadedSessions = new SerialList(); // create new inst
+		loadedSessions.loadSerialList(); // load prev list file
+		//savedSessions = loadedSessions;
+
+		// debug print out current list items
+		System.out.println(loadedSessions.strList);
+
+		for (int i = 0; i <= loadedSessions.strList.size()-1; i++) {
+			items.add(loadedSessions.strList.get(i));
+			//System.out.println(tutors.size());
+
+		}
+		itemSlots.setItems(items);
+
+// ENDDD!!! =======================  SERIALIZATION PROCESS!!!!!!
+*/
 
 } // end class def
