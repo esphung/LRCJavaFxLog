@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-13 21:41:54
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 23:41:18
+* @Last Modified time: 2015-04-24 01:01:28
 */
 
 import javafx.scene.paint.Color; // password field
@@ -108,20 +108,57 @@ public class NewStudentBox {
 				"Advanced Automation and Robotics Technology",
 				"Agriculture",
 				"Automotive Technology",
+				"Aviation Manufacturing",
+				"Baking and Pastry Arts",
+				"Biotechnology",
+				"Building Construction Technology",
 				"Business Administration",
-				"Early Childhood Education",
-				"Poetry",
-				"Chemistry",
-				"Anthropology",
-				"History",
-				"Philosophy",
-				"Comedy",
-				"Physics",
-				"Calculus",
+				"Computer Information Systems",
+				"Computer Information Technology",
 				"Computer Science",
-				"Physical Science",
-				"Astronomy",
-				"Counting"
+				"Criminal Justice",
+				"Culinary Arts",
+				"Cyber Security/Information Assurance",
+				"Database Management and Administration",
+				"Design Technology",
+				"Early Childhood Education",
+				"Education",
+				"Electrical Engineering Technology",
+				"Electronics & Computer Technology",
+				"Energy Technology",
+				"Entrepeneurship",
+				"Fine Arts",
+				"General Education (Transfer Core)",
+				"General Studies",
+				"Health Care Support",
+				"Health Information Technology",
+				"Heating, Ventilation and Air Conditioning Technology (HVAC)",
+				"Homeland Security/Public Safety",
+				"Hospitality Administration",
+				"Human Services",
+				"Imaging Sciences",
+				"Industrial Technology",
+				"Informatics",
+				"Information Technology Support",
+				"Liberal Arts",
+				"Library Technical Assistant",
+				"Machine Tool Technology",
+				"Manufacturing Production and Operations",
+				"Mechanical Engineering Technology",
+				"Medical Assisting",
+				"Mortuary Science",
+				"Nursing",
+				"Office Administration",
+				"Paralegal Studies",
+				"Paramedic Science",
+				"Practical Nursing",
+				"Pre-Engineering",
+				"Respiratory Care",
+				"Server Administration",
+				"Software Development",
+				"Supply Chain Management/Logistics",
+				"Surgical Technology",
+				"Visual Communications"
 
 			);
 			majorList.setItems(majorItems);
@@ -166,8 +203,8 @@ public class NewStudentBox {
 		//Creating a GridPane container
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
-		grid.setVgap(5);
-		grid.setHgap(5);
+		grid.setVgap(30);
+		grid.setHgap(30);
 
 
 		//Defining the c Number text field
