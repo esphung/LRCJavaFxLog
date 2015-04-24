@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 22:38:01
+* @Last Modified time: 2015-04-23 23:12:24
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
@@ -176,7 +176,7 @@ public class Main extends Application{
 
 		// home right box
 		VBox homeRightBox = new VBox(30);
-		homeRightBox.setPrefWidth(PREF_MAINWINDOW_WIDTH/3);
+		//homeRightBox.setPrefWidth(PREF_MAINWINDOW_WIDTH/3);
 		VBox rightContent = new VBox(30);
 		//rightContent.setPadding(new Insets(10));
 		//rightContent.setSpacing(8);
@@ -221,12 +221,12 @@ public class Main extends Application{
 		//itemSlots.setMaxHeight(Control.USE_PREF_SIZE); // set list on list box height
 		tutorSlots.setPrefWidth(300);
 		tutorSlots.setPrefHeight(1000);
-		rightContent.getChildren().addAll(new Label("\t\tTutors"),tutorSlots);
+		rightContent.getChildren().addAll(new Label("Tutors"),tutorSlots);
 
 		// add home right content
 		homeRightBox.getChildren().add(rightContent);
 		homeRightBox.setPadding(new Insets(15,12,15,12));
-		homeRightBox.setAlignment(Pos.TOP_CENTER); // center align layout
+		//homeRightBox.setAlignment(Pos.TOP_CENTER); // center align layout
 
 
 
@@ -273,12 +273,12 @@ public class Main extends Application{
 
 		// home bottom content
 		HBox bottomContent = new HBox(30); // for gui objects
-		bottomContent.setPadding(new Insets(10));
-		bottomContent.setSpacing(8);
+		bottomContent.setPadding(new Insets(15,12,15,12));
+		bottomContent.setSpacing(30);
 		//Text bottomContentLabel = new Text("Bottom Content Box");
 
 		// bottom remove button
-		removeBtn = new Button("Remove");
+		removeBtn = new Button("Remove Student");
 		removeBtn.getStylesheets().add("Style.css");
 		removeBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		// remove button event
@@ -295,7 +295,7 @@ public class Main extends Application{
 
 
 		// bottom load button
-		loadBtn = new Button("Load");
+		loadBtn = new Button("Load Current");
 		loadBtn.getStylesheets().add("Style.css");
 		loadBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		loadBtn.setOnAction(e -> {
@@ -314,7 +314,7 @@ public class Main extends Application{
 			System.out.println(itemSlots.getFocusModel().getFocusedItem());
 			System.out.println(tutorSlots.getFocusModel().getFocusedItem());
 
-			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " since " + "(time)";
+			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " @ " + "(time)";
 			sessions.add(session);
 			sessionSlots.setItems(sessions);
 			items.remove(itemSlots.getFocusModel().getFocusedItem());

@@ -2,22 +2,27 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 16:58:21
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-11 19:55:54
+* @Last Modified time: 2015-04-23 23:13:20
 // CSS LAYER FOR MAIN CLASS
 */
 
+
+
+.text {
+	-fx-font: bold 15pt "Arial";
+
+}
+
 .button {
-    -fx-font: bold 20pt "Arial";
+    -fx-font: bold 18pt "Arial";
     -fx-padding: 10;
     -fx-background-color: #f0f8ff;
     -fx-border-color: white;
 } /* buttons style */
 
-
-
 .root{
-    -fx-font-size: 16pt;
-    -fx-font: bold 20pt "Arial";
+    -fx-font-size: 12pt;
+    -fx-font: bold 17pt "Arial";
     -fx-base: #f0f8ff;
     -fx-background:  white;
 } /* root sets reset values */

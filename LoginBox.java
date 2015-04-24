@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 10:40:59
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 22:40:33
+* @Last Modified time: 2015-04-23 23:14:07
 // ALERT BOX CLASS <- FOR RETURN STUDENT SIGN IN
 */
 
@@ -287,7 +287,7 @@ public class LoginBox {
 
 
 		// close modal right box/content
-		modalRightContent.getChildren().addAll(new Label(),grid,newUserBtn);
+		modalRightContent.getChildren().addAll(new Label(),grid);
 		modalRightBox.getChildren().add(modalRightContent);
 
 
