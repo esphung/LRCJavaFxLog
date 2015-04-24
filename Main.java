@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 23:59:51
+* @Last Modified time: 2015-04-24 00:18:56
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
@@ -32,8 +32,8 @@ public class Main extends Application{
 	final static int PREF_ROW_SPACING = 					250;
 	final static int PREF_SUBWINDOW_WIDTH = 			800;
 	final static int PREF_SUBWINDOW_HEIGHT = 			728;
-	final static int PREF_MAINWINDOW_WIDTH = 			1024;
-	final static int PREF_MAINWINDOW_HEIGHT = 			PREF_MAINWINDOW_WIDTH/12*9;
+	final static int PREF_MAINWINDOW_WIDTH = 			1152;
+	final static int PREF_MAINWINDOW_HEIGHT = 			1024/12*9;//728
 
 
 
@@ -96,15 +96,14 @@ public class Main extends Application{
 			if (student.selection == null) {
 				student.selection = "";
 				items.add(student.firstName + " " + student.lastName);
-			} // end if null
-			else{
+			} else{
 				items.add(student.firstName + " " + student.lastName + " -> " + student.selection);
-			}
+			} // end if/else null selection
+
+			} // end if last name null
 
 
 
-
-			} // end if null
 
 			// validate c number
 			if (student.cNumber != null && !student.cNumber.isEmpty()) {
