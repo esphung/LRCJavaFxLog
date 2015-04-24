@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 16:58:21
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 23:13:20
+* @Last Modified time: 2015-04-24 01:03:22
 // CSS LAYER FOR MAIN CLASS
 */
 
@@ -11,7 +11,7 @@
 .text {
 	-fx-font: bold 15pt "Arial";
 
-}
+} /* all general text */
 
 .button {
     -fx-font: bold 18pt "Arial";
