@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 22:17:06
+* @Last Modified time: 2015-04-23 22:38:01
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
@@ -283,7 +283,13 @@ public class Main extends Application{
 		removeBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		// remove button event
 		removeBtn.setOnAction(e -> {
-			items.remove(itemSlots.getFocusModel().getFocusedItem());
+			System.out.println(items.size());
+			if (items.size() <= 1) {
+				items.clear();
+			}
+			else {
+				items.remove(itemSlots.getFocusModel().getFocusedItem());
+			} // end if/else clear out
 			itemSlots.setItems(items);
 		});
 
@@ -311,12 +317,30 @@ public class Main extends Application{
 			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " since " + "(time)";
 			sessions.add(session);
 			sessionSlots.setItems(sessions);
-
-
+			items.remove(itemSlots.getFocusModel().getFocusedItem());
+			//itemSlots.setItems(items);
 
 		}); // end start button event
 
-		bottomContent.getChildren().addAll(removeBtn,loadBtn,startBtn);
+		// bottom end button
+		Button endBtn = new Button("End Session");
+		endBtn.getStylesheets().add("Style.css");
+		endBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
+		// end btn event
+		endBtn.setOnAction(e -> {
+			System.out.println(sessions.size());
+			if (sessions.size() <= 1) {
+				sessions.clear();
+			}
+			else {
+				sessions.remove(sessionSlots.getFocusModel().getFocusedItem());
+			} // end if/else clear out
+
+			sessionSlots.setItems(sessions);
+
+		}); // end end button event
+
+		bottomContent.getChildren().addAll(removeBtn,loadBtn,startBtn,endBtn);
 
 		homeBottomBox.getChildren().add(bottomContent);
 		homeBottomBox.setPadding(new Insets(15,12,15,12));

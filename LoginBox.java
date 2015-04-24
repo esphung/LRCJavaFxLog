@@ -1,8 +1,8 @@
 /*
 * @Author: Eric Phung
 * @Date:   2015-04-11 10:40:59
-* @Last Modified by:   home
-* @Last Modified time: 2015-04-23 21:11:39
+* @Last Modified by:   Eric Phung
+* @Last Modified time: 2015-04-23 22:40:33
 // ALERT BOX CLASS <- FOR RETURN STUDENT SIGN IN
 */
 
@@ -74,10 +74,10 @@ public class LoginBox {
 		//closeBtn.setOnAction(e -> alertWindow.close());
 
 		// create two buttons (yes/no)
-		Button yesBtn = 							new Button("Yes!");
+		Button yesBtn = 							new Button("Submit");
 		yesBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		yesBtn.setDefaultButton(true);
-		Button noBtn = 								new Button("No!");
+		Button noBtn = 								new Button("Cancel");
 		noBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 
 
@@ -99,7 +99,7 @@ public class LoginBox {
 		modalBottomBox.setPrefHeight(PREF_SUBWINDOW_HEIGHT/12);
 		modalBottomBox.setAlignment(Pos.TOP_CENTER);
 		modalBottomBox.setPadding(new Insets(15,12,15,12));
-		modalBottomBox.getChildren().addAll(label,noBtn,yesBtn);
+		modalBottomBox.getChildren().addAll(label,yesBtn,noBtn);
 		//layout.setAlignment(Pos.BOTTOM_CENTER); // center align layout
 		modalBottomContent.setPadding(new Insets(15,12,15,12));
 		//layout.setSpacing(20); // space pixels

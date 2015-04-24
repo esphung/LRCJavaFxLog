@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-13 20:58:08
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-13 21:27:52
+* @Last Modified time: 2015-04-23 22:39:36
 */
 import javafx.collections.*; // observable list
 import java.util.*;
@@ -66,11 +66,11 @@ public class NameBox {
 
 
         //Create two buttons
-        Button yesButton = new Button("This one");
+        Button yesButton = new Button("Ok");
         yesButton.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
         yesButton.setDefaultButton(true);
 
-        Button noButton = new Button("None");
+        Button noButton = new Button("Cancel");
         noButton.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 
 
@@ -86,7 +86,7 @@ public class NameBox {
             window.close();
         });
 
-        VBox layout = new VBox(10);
+        VBox layout = new VBox(30);
 
 
         //Add buttons
