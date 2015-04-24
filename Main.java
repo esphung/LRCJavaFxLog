@@ -2,14 +2,14 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 23:49:57
+* @Last Modified time: 2015-04-23 23:59:51
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
 */
 
 
-
+import java.util.Date;
 import javafx.scene.paint.Color; // password field
 import javafx.collections.*; // observable list
 
@@ -77,7 +77,11 @@ public class Main extends Application{
 
 		//primaryStage.setTitle("LRC Student Queue");
 
-
+		// create timestamp
+		Date date = new Date();
+		System.out.println(date); // 12/01/2011 4:48:16 PM
+		String timestamp = new java.text.SimpleDateFormat("h:mm a").format(new Date());
+		System.out.println(timestamp); // 12/01/2011 4:48:16 PM
 
 		//	====================================		LOGIN STUFF
 		// set login button
@@ -324,7 +328,7 @@ public class Main extends Application{
 				return;
 			}
 
-			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " @ " + "(time)";
+			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " @ " + timestamp;
 			sessions.add(session);
 			sessionSlots.setItems(sessions);
 			items.remove(itemSlots.getFocusModel().getFocusedItem());
