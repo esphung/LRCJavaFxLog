@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-11 10:40:59
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-23 23:14:07
+* @Last Modified time: 2015-04-23 23:48:30
 // ALERT BOX CLASS <- FOR RETURN STUDENT SIGN IN
 */
 
@@ -199,8 +199,8 @@ public class LoginBox {
 		//Creating a GridPane container
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
-		grid.setVgap(5);
-		grid.setHgap(5);
+		grid.setVgap(30);
+		grid.setHgap(30);
 
 
 
@@ -211,19 +211,19 @@ public class LoginBox {
 		GridPane.setConstraints(firstNameTextField, 0, 0);
 		grid.getChildren().add(firstNameTextField);
 */
-
+		//Defining the cnumber text field
+		final TextField cNumberTextField = new TextField();
+		cNumberTextField.setPromptText("Enter your C number.");
+		GridPane.setConstraints(cNumberTextField, 0, 0);
+		grid.getChildren().add(cNumberTextField);
 
 		//Defining the Last Name text field
 		final TextField lastNameTextField = new TextField();
 		lastNameTextField.setPromptText("Enter your last name.");
-		GridPane.setConstraints(lastNameTextField, 0, 0);
+		GridPane.setConstraints(lastNameTextField, 0, 1);
 		grid.getChildren().add(lastNameTextField);
 
-		//Defining the cnumber text field
-		final TextField cNumberTextField = new TextField();
-		cNumberTextField.setPromptText("Enter your C number.");
-		GridPane.setConstraints(cNumberTextField, 0, 1);
-		grid.getChildren().add(cNumberTextField);
+
 
 		// create new user button
 		newUserBtn = new Button("New User");
@@ -246,6 +246,7 @@ public class LoginBox {
 			firstName = found.firstName;
 			major = found.major;
 			selection = subjectList.getSelectionModel().getSelectedItem();
+
 
 
 			//System.out.println(selection);

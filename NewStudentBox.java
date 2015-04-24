@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-13 21:41:54
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-14 00:23:32
+* @Last Modified time: 2015-04-23 23:41:18
 */
 
 import javafx.scene.paint.Color; // password field
@@ -189,12 +189,14 @@ public class NewStudentBox {
 		GridPane.setConstraints(lastNameTextField, 0, 2);
 		grid.getChildren().add(lastNameTextField);
 
+
+/*
 		//Defining the major text field
 		final TextField majorTextField = new TextField();
 		majorTextField.setPromptText("Enter your major.");
 		GridPane.setConstraints(majorTextField, 0, 3);
 		grid.getChildren().add(majorTextField);
-
+*/
 
 
 		//Defining the Submit button
@@ -230,8 +232,8 @@ public class NewStudentBox {
 		submitButton.setOnAction(e ->{
 
 			// null fields
-			if (majorList.getFocusModel().getFocusedItem() == null || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || majorTextField.getText().isEmpty() || cNumberTextField.getText().isEmpty()) {
-				titleLabel.setText("Please Complete All Text Fields and Select Your Major.");
+			if (majorList.getFocusModel().getFocusedItem() == null || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || cNumberTextField.getText().isEmpty() || cNumberTextField.getText().length() < 8 || cNumberTextField.getText().length() > 8) {
+				titleLabel.setText("Complete All Fields and Select Your Major (C Number must be 8 digits)");
 			}
 			else {
 					try {

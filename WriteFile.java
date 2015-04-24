@@ -2,7 +2,7 @@
 * @Author: Eric Phung
 * @Date:   2015-04-13 23:02:29
 * @Last Modified by:   Eric Phung
-* @Last Modified time: 2015-04-13 23:15:22
+* @Last Modified time: 2015-04-23 23:34:47
 */
 
 import java.io.*;
@@ -10,6 +10,8 @@ public class WriteFile{
 
 
 	public WriteFile(String cNumber,String lastName,String firstName,String major){
+		cNumber = cNumber.replace("c", "");
+
 		try {
 		    FileWriter outFile = new FileWriter("studentDatabase.csv", true);
 		    PrintWriter output = new PrintWriter(outFile);
