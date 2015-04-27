@@ -1,8 +1,8 @@
 /*
 * @Author: Eric Phung
 * @Date:   2015-04-11 09:21:02
-* @Last Modified by:   home
-* @Last Modified time: 2015-04-24 03:40:28
+* @Last Modified by:   Eric Phung
+* @Last Modified time: 2015-04-27 13:39:49
 // JavaFx Stuff
 // "Stage" is the entire window
 // "Scene" is the content (stuff) inside the window ("Stage")
@@ -39,7 +39,7 @@ public class Main extends Application{
 
 	// decare instance vars
 	// sessions
-	//SerialList savedSessions; // serialized list sessions
+
 	ObservableList<String> sessions;
 	ListView<String> sessionSlots;
 	// tutors
@@ -109,7 +109,7 @@ public class Main extends Application{
 			} // end if/else null selection
 
 			} // end if last name null
-								// save the current list items
+
 
 
 
@@ -121,8 +121,7 @@ public class Main extends Application{
 				System.out.print(student.cNumber);
 			} // end if null
 
-				SerialList savedSessions = new SerialList(items); // save current list
-				savedSessions.saveSerialList();
+
 
 		}); // args: title, message
 		loginBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
@@ -332,9 +331,6 @@ public class Main extends Application{
 		loadBtn.getStylesheets().add("Style.css");
 		loadBtn.setPrefSize(MAX_BUTTON_WIDTH, MAX_BUTTON_HEIGHT);
 		loadBtn.setOnAction(e -> {
-
-
-
 		}); // load button event
 
 
@@ -347,15 +343,22 @@ public class Main extends Application{
 		startBtn.setOnAction(e -> {
 			// pull text from slot lists
 			System.out.println(itemSlots.getFocusModel().getFocusedItem());
+			String studentName = itemSlots.getFocusModel().getFocusedItem();
 			System.out.println(tutorSlots.getFocusModel().getFocusedItem());
 			if (itemSlots.getFocusModel().getFocusedItem() == null) {
+
 				return;
+				//itemSlots.getFocusModel().getFocusedItem();
+			}
+			else{
+				String session = studentName + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " @ " + timestamp;
+					items.remove(itemSlots.getFocusModel().getFocusedItem());
+				sessions.add(session);
+				sessionSlots.setItems(sessions);
 			}
 
-			String session = itemSlots.getFocusModel().getFocusedItem() + " w/ " + tutorSlots.getFocusModel().getFocusedItem() + " @ " + timestamp;
-			sessions.add(session);
-			sessionSlots.setItems(sessions);
-			items.remove(itemSlots.getFocusModel().getFocusedItem());
+
+
 			//itemSlots.setItems(items);
 
 		}); // end start button event
@@ -378,7 +381,7 @@ public class Main extends Application{
 
 		}); // end end button event
 
-		bottomContent.getChildren().addAll(removeBtn,loadBtn,startBtn,endBtn);
+		bottomContent.getChildren().addAll(removeBtn,startBtn,endBtn); // optional loadBtn for later use
 
 		homeBottomBox.getChildren().add(bottomContent);
 		homeBottomBox.setPadding(new Insets(15,12,15,12));
@@ -397,18 +400,6 @@ public class Main extends Application{
 
 
 
-		// load the current list items
-		SerialList loadedSessions = new SerialList(); // create new inst
-		loadedSessions.loadSerialList(); // load prev list file
-
-		// debug print out current list items
-		System.out.println(loadedSessions.strList);
-
-		for (int i = 0; i <= loadedSessions.strList.size()-1; i++) {
-			items.add(loadedSessions.strList.get(i));
-			//System.out.println(tutors.size());
-		}
-
 
 
 
@@ -418,13 +409,6 @@ public class Main extends Application{
 		window.setTitle("Welcome to the Learning Resource Center!");
 		window.show();
 
-		window.setOnCloseRequest(new EventHandler<WindowEvent>() {
-          public void handle(WindowEvent we) {
-          	//save the current list items
-						SerialList savedSessions = new SerialList(items); // save current list
-						savedSessions.saveSerialList();
-          } // end closing handle
-      }); // end close request
     //window.close();
 
 
@@ -438,7 +422,7 @@ public class Main extends Application{
 
 /*
 
-// =======================  SERIALIZATION PROCESS!!!!!!
+// =======================  SERIALIZATION PROCESS!!!!!! OPTIONAL
 		// save the current list items
 		//SerialList savedSessions = new SerialList(items); // save current list
 
